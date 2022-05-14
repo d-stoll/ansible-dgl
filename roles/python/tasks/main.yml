@@ -1,0 +1,15 @@
+- name: Install Python {{ python_version }}
+  apt:
+    name: python{{ python_version }}
+    state: present
+
+- name: Set default Python version to {{ python_version }}
+  alternatives:
+    name: python
+    path: /usr/bin/python{{ python_version }}
+    link: /usr/bin/python
+
+- name: Install Python packages
+  pip:
+    name: "{{ item }}"
+  loop: "{{ python_packages }}"

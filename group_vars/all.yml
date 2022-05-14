@@ -1,0 +1,7 @@
+dgl_version: 0.8.1
+pytorch_version: 1.11.0
+python_version: 3.9
+workspace: /home/dgl/workspace
+python_packages:
+  - ogb
+  - networkx
