@@ -1,6 +1,8 @@
-- name: Install Python {{ python_version }}
+- name: Install Python {{ python_version }} & pip
   apt:
-    name: python{{ python_version }}
+    name:
+      - python{{ python_version }}
+      - python3-pip
     state: present
 
 - name: Set default Python version to {{ python_version }}

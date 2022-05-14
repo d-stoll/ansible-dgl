@@ -1,0 +1,11 @@
+---
+- name: Install PyTorch {{ pytorch_version }}
+  pip:
+    name: torch
+    extra_args: --extra-index-url {{ pytorch_index_url }}
+
+- name: Install DGL {{ dgl_version }}
+  pip:
+    name: dgl=={{ dgl_version }}
+    extra_args: -f {{ dgl_find_links_url }}
+

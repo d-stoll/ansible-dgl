@@ -1,0 +1,2 @@
+pytorch_index_url: https://download.pytorch.org/whl/cpu
+dgl_find_links_url: https://data.dgl.ai/wheels/repo.html
