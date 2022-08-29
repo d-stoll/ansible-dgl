@@ -56,10 +56,10 @@ $ ansible-playbook -i hosts update-cluster.yml
 
 ### Configuring the deployment
 
-| Variable        | Description                                           | Default value       |
-|:----------------|:------------------------------------------------------|:--------------------|
-| dgl_version     | Version of Deep Graph Library (DGL)                   | 0.8.1               |
-| pytorch_version | Version of PyTorch                                    | 1.11.0              |
-| python_version  | Version of the Python interpreter                     | 3.9                 |
-| workspace       | Path of DGL workspace (shared via NFS with all nodes) | /home/dgl/workspace |
-| python_packages | List of Python packages to be additionally installed  | ogb, networkx       |
+| Variable           | Description                                           | Default value       |
+|:-------------------|:------------------------------------------------------|:--------------------|
+| dgl_version        | Version of Deep Graph Library (DGL)                   | 0.9.0               |
+| pytorch_version    | Version of PyTorch                                    | 1.11.0              |
+| python_version     | Version of the Python interpreter                     | 3.9                 |
+| workspace          | Path of DGL workspace (shared via NFS with all nodes) | /home/dgl/workspace |
+| extra_pip_packages | List of Python packages to be additionally installed  | ogb, networkx       |

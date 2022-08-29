@@ -11,7 +11,7 @@
     path: /usr/bin/python{{ python_version }}
     link: /usr/bin/python
 
-- name: Install Python packages
+- name: Install pip packages
   pip:
     name: "{{ item }}"
-  loop: "{{ python_packages }}"
+  loop: "{{ extra_pip_packages }}"
