@@ -1,4 +1,11 @@
 ---
+- name: Check required variables for NFS
+  assert:
+    that:
+      - (mount_username is defined) and (mount_username != None)
+      - (mount_password is defined) and (mount_password != None)
+      - (mount_src is defined) and (mount_src != None)
+
 - name: Install cifs-utils package
   become: yes
   apt:

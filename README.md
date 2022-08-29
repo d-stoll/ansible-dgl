@@ -12,7 +12,7 @@ Make sure that all nodes have Ubuntu installed and are reachable via SSH.
 
 ## Usage
 
-### Defining the inventory file
+### Define the inventory file
 
 Create a new ansible inventory containing the IP addresses of the master and worker instances:
 
@@ -28,12 +28,26 @@ $ cat > hosts << EOL
 EOL
 ```
 
-### Execute the playbooks
+### Set required variables
 
-To setup the DGL cluster, execute:
+The playbooks contain parts for which you have to define mandatory variables such as NFS username and password. 
+
+You can define a local secret file to store the variables:
 
 ```{shell}
-$ ansible-playbook -i hosts setup-cluster.yml
+$ cat > .secrets.yml << EOL
+mount_username: <YOUR_USERNAME>
+mount_password: <YOUR_PASSWORD>
+mount_src: <YOUR_MOUNT_SOURCE>
+EOL
+```
+
+### Execute the playbooks
+
+To set up the DGL cluster, execute:
+
+```{shell}
+$ ansible-playbook -i hosts setup-cluster.yml -e ".secrets.yml"
 ```
 
 To stop the DGL cluster, execute:
@@ -56,6 +70,8 @@ $ ansible-playbook -i hosts update-cluster.yml
 
 ### Configuring the deployment
 
+Required variables are marked with *
+
 | Variable           | Description                                           | Default value       |
 |:-------------------|:------------------------------------------------------|:--------------------|
 | dgl_version        | Version of Deep Graph Library (DGL)                   | 0.9.0               |
@@ -63,3 +79,6 @@ $ ansible-playbook -i hosts update-cluster.yml
 | python_version     | Version of the Python interpreter                     | 3.9                 |
 | workspace          | Path of DGL workspace (shared via NFS with all nodes) | /home/dgl/workspace |
 | extra_pip_packages | List of Python packages to be additionally installed  | ogb, networkx       |
+| mount_username *   | Username for SMB/CIFS share                           |                     |
+| mount_password *   | Password for SMB/CIFS share                           |                     |
+| mount_src *        | Mount source path of SMB/CIFS share                   |                     |
