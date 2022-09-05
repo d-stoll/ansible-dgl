@@ -1,17 +1,22 @@
 - name: Install Python {{ python_version }} & pip
+  become: yes
   apt:
     name:
       - python{{ python_version }}
       - python3-pip
+      - python{{ python_version }}-venv
     state: present
 
 - name: Set default Python version to {{ python_version }}
+  become: yes
   alternatives:
     name: python
     path: /usr/bin/python{{ python_version }}
-    link: /usr/bin/python
+    link: /usr/bin/python3
 
 - name: Install pip packages
   pip:
     name: "{{ item }}"
+    virtualenv: /home/ubuntu/venvs/dgl
+    virtualenv_command: "python3.9 -m venv"
   loop: "{{ extra_pip_packages }}"

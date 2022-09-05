@@ -5,3 +5,5 @@ workspace: /home/dgl/workspace
 extra_pip_packages:
   - ogb
   - networkx
+
+ansible_user: ubuntu

@@ -72,13 +72,14 @@ $ ansible-playbook -i hosts update-cluster.yml
 
 Required variables are marked with *
 
-| Variable           | Description                                           | Default value       |
-|:-------------------|:------------------------------------------------------|:--------------------|
-| dgl_version        | Version of Deep Graph Library (DGL)                   | 0.9.0               |
-| pytorch_version    | Version of PyTorch                                    | 1.11.0              |
-| python_version     | Version of the Python interpreter                     | 3.9                 |
-| workspace          | Path of DGL workspace (shared via NFS with all nodes) | /home/dgl/workspace |
-| extra_pip_packages | List of Python packages to be additionally installed  | ogb, networkx       |
-| mount_username *   | Username for SMB/CIFS share                           |                     |
-| mount_password *   | Password for SMB/CIFS share                           |                     |
-| mount_src *        | Mount source path of SMB/CIFS share                   |                     |
+| Variable           | Description                                                    | Default value       |
+|:-------------------|:---------------------------------------------------------------|:--------------------|
+| dgl_version        | Version of Deep Graph Library (DGL)                            | 0.9.0               |
+| pytorch_version    | Version of PyTorch                                             | 1.11.0              |
+| python_version     | Version of the Python interpreter                              | 3.9                 |
+| workspace          | Path of DGL workspace (shared via NFS with all nodes)          | /home/dgl/workspace |
+| extra_pip_packages | List of Python packages to be additionally installed           | ogb, networkx       |
+| mount_username *   | Username for SMB/CIFS share                                    |                     |
+| mount_password *   | Password for SMB/CIFS share                                    |                     |
+| mount_src *        | Mount source path of SMB/CIFS share                            |                     |
+| ansible_user       | System username where DGL is installed (SSH access required)   | ubuntu              |
