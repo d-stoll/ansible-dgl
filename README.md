@@ -36,16 +36,10 @@ To set up the DGL cluster, execute:
 $ ansible-playbook -i hosts setup-cluster.yml
 ```
 
-To stop the DGL cluster, execute:
-
-```{shell}
-$ ansible-playbook -i hosts stop-cluster.yml
-```
-
 To re-start the DGL cluster, execute:
 
 ```{shell}
-$ ansible-playbook -i hosts start-cluster.yml
+$ ansible-playbook -i hosts restart-cluster.yml
 ```
 
 To update apt packages or change the DGL/Pytorch version of the DGL cluster, execute:
