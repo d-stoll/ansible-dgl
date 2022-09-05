@@ -12,3 +12,10 @@
     extra_args: -f {{ dgl_find_links_url }}
     virtualenv: "{{ virtualenv_path }}"
     virtualenv_command: "python3.9 -m venv"
+
+- name: Add launch script to workspace
+  when: inventory_hostname in groups['master']
+  get_url:
+    url: "{{ dgl_launch_script_url }}"
+    dest: "{{ workspace_path }}/launch.py"
+    mode: "0700"

@@ -2,7 +2,5 @@
 - hosts: all
   roles:
     - system
-    - ssh
-    - nfs
     - python
     - dgl
