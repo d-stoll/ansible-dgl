@@ -1,0 +1,43 @@
+---
+- name: Install essential libs on storage server
+  when: inventory_hostname in groups['master']
+  become: yes
+  apt:
+    name: nfs-kernel-server
+    state: present
+
+- name: Install essential packages on clients
+  when: inventory_hostname in groups['worker']
+  become: yes
+  apt:
+    name: nfs-common
+    state: present
+
+- name: Create workspace directory
+  file:
+    path: "{{ workspace_path }}"
+    state: directory
+
+- name: Export NFS share to clients on master
+  when: inventory_hostname in groups['master']
+  become: yes
+  lineinfile:
+    dest: /etc/exports
+    line: "{{ workspace_path }}  {{ item }}(rw,sync,no_subtree_check)"
+  loop: "{{ groups['worker'] }}"
+
+- name: Restart NFS on master
+  when: inventory_hostname in groups['master']
+  become: yes
+  systemd:
+    name: nfs-kernel-server
+    state: restarted
+
+- name: Mount NFS volume on workers
+  when: inventory_hostname in groups['worker']
+  become: yes
+  mount:
+    src: "{{ groups['master'][0] }}:{{ workspace_path }}"
+    path: "{{ workspace_path }}"
+    state: mounted
+    fstype: nfs

@@ -3,12 +3,12 @@
   pip:
     name: torch
     extra_args: --extra-index-url {{ pytorch_index_url }}
-    virtualenv: /home/{{ ansible_user }}/venvs/dgl
+    virtualenv: "{{ virtualenv_path }}"
     virtualenv_command: "python3.9 -m venv"
 
 - name: Install DGL {{ dgl_version }}
   pip:
     name: dgl=={{ dgl_version }}
     extra_args: -f {{ dgl_find_links_url }}
-    virtualenv: /home/{{ ansible_user }}/venvs/dgl
+    virtualenv: "{{ virtualenv_path }}"
     virtualenv_command: "python3.9 -m venv"

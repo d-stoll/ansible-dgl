@@ -1,9 +1,12 @@
 dgl_version: 0.9.0
 pytorch_version: 1.12.1
 python_version: 3.9
-workspace: /home/dgl/workspace
+workspace_path: /home/{{ ansible_user }}/workspace
 extra_pip_packages:
   - ogb
   - networkx
 
 ansible_user: ubuntu
+virtualenv_path: /home/{{ ansible_user }}/venvs/dgl
+
+use_cifs: false

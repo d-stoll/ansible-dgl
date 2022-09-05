@@ -17,6 +17,12 @@
 - name: Install pip packages
   pip:
     name: "{{ item }}"
-    virtualenv: /home/ubuntu/venvs/dgl
+    virtualenv: "{{ virtualenv_path }}"
     virtualenv_command: "python3.9 -m venv"
   loop: "{{ extra_pip_packages }}"
+
+- name: Update bashrc to automatically activate environment
+  lineinfile:
+    dest: /home/{{ ansible_user }}/.bashrc
+    line: "source {{ virtualenv_path }}/bin/activate"
+    owner: "{{ ansible_user }}"

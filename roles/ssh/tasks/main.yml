@@ -20,7 +20,7 @@
 - name: Add master public key to all nodes
   become: yes
   authorized_key:
-    user: {{ ansible_user }}
+    user: "{{ ansible_user }}"
     key: "{{ lookup('file', '/tmp/id_dgl_master.pub') }}"
 
 - name: Restart SSH service

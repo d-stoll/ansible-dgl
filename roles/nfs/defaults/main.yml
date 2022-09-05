@@ -5,6 +5,6 @@ mount_password: None
 
 mount_src: None
 
-mount_path: {{ workspace }}
+mount_path: "{{ workspace_path }}"
 mount_fstype: cifs
 mount_ops: username={{ mount_username }},password=,domain=ADS,vers=3.1.1,nodfs,uid=1001,gid=1001

@@ -5,3 +5,4 @@
     - ssh
     - python
     - dgl
+    - nfs
